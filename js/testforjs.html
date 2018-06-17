@@ -1,0 +1,83 @@
+<head>
+      <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div id="abc"></div>
+    <script type="text/javascript">
+console.log(this);
+
+        var arrayWords={
+            movies:["Fargo","The_Good_The_Bad_and_The_Ugly"],
+            moviesdrawn:"ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            moviedraw:function(){
+                this.moviesdrawn=this.movies[Math.floor(Math.random()*this.movies.length)].toLowerCase();
+                console.log(this.moviesdrawn);
+
+                alert("Guns cocked!! Word Drawn!! Play!!");
+                var btnlist=[];
+                var divv="";
+                console.log(this.moviesdrawn.length);
+                for(var j=0;j <this.moviesdrawn.length;j++){
+                //Here we have our button for generating random numbers (#random-button)
+                 //Create an input type dynamically.   
+                    var element = document.createElement("button");
+                    element.id="btn"+j;
+                    element.Text="_";
+                    console.log("Created butt"+j);
+
+
+                    // Sorry - I just have to cheat by using jQuery here - for some reason getelement by Id was not working , and it was 11.40 p.m., so...
+
+                    $("#abc").append(element);
+
+                    //abc.appendChild(element);
+                //<button id="random-button" class="btn btn-primary btn-lg"><h1><span class="fa fa-question"></span></h1></button>
+                    };
+
+
+            },
+
+            findd: function(entt){
+                    console.log(entt);
+                    for (var k=0; k < this.moviesdrawn.length; k++) {
+                    console.log(entt + "press"+ this.moviesdrawn.toLowerCase().indexOf(entt));
+                    console.log(entt + "press"+ this.moviesdrawn[k].toLowerCase());
+                    if (this.moviesdrawn[k].toLowerCase()==entt){
+                        alert("Found");
+                        $("#btn"+k).attr('text',this.moviesdrawn[k]);
+                    };
+                    };          
+            } 
+                //for (var i=0;i<this.moviesdrawn.length;i++) {
+                //    If (this.moviesdrawn.charAt(i).toLowerCase()==entt.toLowerCase()) 
+                //        console.log("Good Going!");
+                //        $("#btn"+i).Text=this.moviesdrawn[i];
+                //        alert("Keep Going");
+                //    };
+
+                
+
+        };
+        
+
+              // define function for onkeyup
+              //var abc=document.getelementbyId("abc");
+              arrayWords.moviedraw();
+
+              document.onkeyup = function(event) {
+                
+                console.log("User pressed :"+ event.key);
+                
+                arrayWords.findd(event.key);
+
+                };
+        
+            
+            
+            
+            
+</script>
+
+</body>
